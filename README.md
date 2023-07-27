@@ -1,0 +1,2 @@
+# DefinedIM_ExamplePlugin
+DefinedIM的示范性插件
