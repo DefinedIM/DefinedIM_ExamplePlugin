@@ -1,0 +1,7 @@
+{
+  "name": "DefinedIM Example Plugin",
+  "version": "0.0.1",
+  "author": "Catium2006",
+  "classpath": "org.definedim.example.ExamplePlugin",
+  "link": "https://github.com/DefinedIM/DefinedIM_ExamplePlugin"
+}

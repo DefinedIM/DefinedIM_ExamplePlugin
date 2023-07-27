@@ -1,0 +1,33 @@
+plugins {
+    id 'java'
+}
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation files('definedim-0.0.1.jar')
+
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+}
+
+test {
+    useJUnitPlatform()
+}
+
+jar {
+    zip64 true
+    from{
+        'plugin.json'
+    }
+    archiveClassifier.set('')
+    // 打包后的jar包文件名
+    archiveBaseName.set('DefinedIM_ExamplePlugin-' + version)
+    archiveVersion.set('')
+
+}
