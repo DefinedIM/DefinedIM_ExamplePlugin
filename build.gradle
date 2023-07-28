@@ -1,5 +1,6 @@
 plugins {
     id 'java'
+    id 'com.github.johnrengelman.shadow' version '7.1.1'
 }
 
 group 'org.example'
@@ -30,4 +31,14 @@ jar {
     archiveBaseName.set('DefinedIM_ExamplePlugin-' + version)
     archiveVersion.set('')
 
+}
+
+shadowJar{
+    from{
+        'plugin.json'
+    }
+    zip64 true
+    archiveClassifier.set('')
+    archiveBaseName.set('DefinedIM_ExamplePlugin-' + version)
+    archiveVersion.set('')
 }
