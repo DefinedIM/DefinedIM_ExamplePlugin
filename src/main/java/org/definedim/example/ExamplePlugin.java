@@ -13,20 +13,20 @@ public class ExamplePlugin extends DefinedIMPlugin {
     @Override
     public void onLoad() {
         System.out.println("Test Plugin Loaded!");
-//        URLClassLoader urlClassLoader = (URLClassLoader) Thread.currentThread().getContextClassLoader();
-//        ClassLoader classLoader = urlClassLoader.getParent();
-        ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
-        try {
-            Class<?> clazz = classLoader.loadClass("org.definedim.DefinedIMServer");
-            Field clazzField = clazz.getDeclaredField("definedIMServer");
-            clazzField.setAccessible(true);
-            Object obj = clazzField.get(null);
-            DefinedIMServer server = (DefinedIMServer) obj;
-            System.out.println(JSON.toJSONString(server));
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        System.out.println(JSON.toJSONString(getDefinedIMServer()));
+        new Thread() {
+            @Override
+            public void run() {
+                try {
+                    while (true) {
+                        Thread.sleep(1000);
+                        System.out.println("json: " + JSON.toJSONString(getDefinedIMServer()));
+                    }
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        }.start();
     }
 
     @Override
